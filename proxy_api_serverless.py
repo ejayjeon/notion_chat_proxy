@@ -19,7 +19,7 @@ async def proxy_ask(request: Request):
         body = await request.json()
         print(f"Request body: {body}")
 
-        async with httpx.AsyncClient(timeout=30.0) as client:
+        async with httpx.AsyncClient(timeout=60.0) as client:
             print(f"Sending request to: {BACKEND_API_URL}")
             response = await client.post(
                 BACKEND_API_URL,

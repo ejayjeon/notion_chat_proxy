@@ -8,6 +8,7 @@ app = FastAPI()
 @app.post("/proxy-ask")
 async def proxy_ask(request: Request):
     client_key = request.headers.get("X-PUBLIC-KEY")
+    print(f"client_key: {client_key}")
     # Flutter → Proxy 호출 시 보내야 할 인증 키 (임의 설정 가능)
     if client_key != PROXY_SECRET_KEY:
         raise HTTPException(status_code=401, detail="❌ 인증 실패: 유효하지 않은 키")

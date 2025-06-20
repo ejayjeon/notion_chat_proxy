@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: gpt-proxy-serverless
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn proxy_api_serverless:app --host=0.0.0.0 --port=5052
+    envVars:
+      - key: PRIVATE_API_KEY
+        sync: false
+      - key: PROXY_SECRET_KEY
+        sync: false
+      - key: BACKEND_API_URL
+        sync: false
